@@ -1,0 +1,19 @@
+Scoper
+===========
+
+A simple plugin that handles scoping a controller to the current_user. I wrote it because I was tired of rewriting the same ten lines of code and every other plugin I saw violated MVC to force the current_user to the model.
+
+Creates a simple around_filter calling with_scope for the model passed in or the name of the controller.
+
+
+Example
+=======
+
+class LogsController < ApplicationController
+  scope_to_user  # will create scope Log => :find => {:conditions => {:user_id => current_user.id}}, :create => {:user_id => current_user.id}
+  
+  scope_to_user :twigs # will create the same scope for Twig instead of Log
+end
+
+
+Copyright (c) 2009 Jonathan Spies, released under the MIT license
